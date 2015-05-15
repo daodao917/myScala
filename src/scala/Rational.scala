@@ -13,11 +13,15 @@ class Rational(n: Int, d: Int) {
 
 	def this(n: Int) = this(n, 1)
 
-	override def toString = n + "/" + d
-
-	def add(that: Rational) = {
-		new Rational(n * that.denom + that.number * denom, denom * that.denom)
+	override def toString = {
+		n + "/" + d
 	}
+
+	def add(that: Rational) =
+		new Rational(n * that.denom + that.number * denom, denom * that.denom)
+
+	def +(that: Rational) =
+		add(that)
 
 	private def gcd(a: Int, b: Int): Int = {
 		if (b == 0) a else gcd(b, a % b)
@@ -25,9 +29,14 @@ class Rational(n: Int, d: Int) {
 }
 
 object Rational {
+	implicit def int2Rational(x: Int) =
+		new Rational(x)
+
 	def main(args: Array[String]) {
 		val r1 = new Rational(1, 3)
 		val r2 = new Rational(1, 2)
-		print(r1.add(r2))
+		println("r1 add r2: " + r1.add(r2))
+		println("r1 + r2: " + (r1 + r2))
+		println("2 + r1: " + (2 + r1))
 	}
 }
