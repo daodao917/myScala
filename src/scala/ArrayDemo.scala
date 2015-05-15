@@ -11,13 +11,14 @@ object ArrayDemo {
   val array2 = ArrayBuffer[Int]() // variable Array
 
   def initFixed(): Unit = {
-    for (i <- 0 to array1.length - 1) {
+    for (i <- 0 until(array1.length, 1)) {
+      // step = 1
       array1(i) = i + 1
     }
   }
 
   def copyFixed(): Unit = {
-    for (i <- 0 to array1.length - 1) {
+    for (i <- 0 until(array1.length, 1)) {
       array1.update(i, array1(i) + 2)
     }
   }
@@ -50,6 +51,6 @@ object ArrayDemo {
     initVariable()
     print("init variable arr: ")
     traverse(array2.toArray)
-//    echo(Array("a", "b", "c"): _*)
+    //    echo(Array("a", "b", "c"): _*)
   }
 }
