@@ -6,6 +6,9 @@ import scala.collection.immutable.{SortedMap, HashMap}
  * Created by yylai on 2015/6/29.
  */
 object CollectionDemo extends App {
+	val numbers = List(1, 2, 3)
+	val numbers2 = List(2, 3, 4, 5)
+
 	def listBody(): Unit = {
 		val list = List(1, 2, 3, 4)
 		val sList = List("abc", "abcd", "abcde", "abcdef")
@@ -79,9 +82,50 @@ object CollectionDemo extends App {
 		}
 	}
 
-	//	listBody()
-	//	setBody()
-	//	tupleBody()
-	//	mapBody()
-	sortedMapBody
+	def timesTwo(x: Int): Int = x * 2
+
+	def mapFunction(): Unit = {
+		println("map: " + numbers.map(timesTwo _))
+	}
+
+	def filterFunction(): Unit = {
+		println("filter: " + numbers.filter(_ >= 2))
+	}
+
+	def zipFunction(): Unit = {
+		println("zip: " + numbers.zip(numbers2).toList(0)._1)
+	}
+
+	def partitionFunction(): Unit = {
+		println("partition: " + numbers.partition(_ >= 2)._1.toList)
+	}
+
+	def findFunction(): Unit = {
+		println("find: " + numbers.find(_ >= 2))
+	}
+
+	def dropFunction: Unit = {
+		println("drop: " + numbers.drop(2))
+		println("dropWhile: " + numbers.dropWhile(_ >= 2))
+		println("dropRight: " + numbers.dropRight(2))
+	}
+
+	def flattenFunction: Unit = {
+		println("flatten: " + List(numbers, numbers2).flatten)
+	}
+
+
+
+	//	listBody
+	//	setBody
+	//	tupleBody
+	//	mapBody
+	// sortedMapBody
+	mapFunction
+	filterFunction
+	zipFunction
+	partitionFunction
+	findFunction
+	dropFunction
+	flattenFunction
 }
